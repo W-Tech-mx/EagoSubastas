@@ -1,24 +1,24 @@
-				
-			<div class="col-xs-6"> 	
+
+			<div class="col-12">
 
 				<div class="form-group">
                     {!! Form::label('title', getPhrase('title'), ['class' => 'control-label']) !!}
 
                     <span class="text-red">*</span>
 
-                    <?php 
+                    <?php
                     $readonly='';
                     if (isset($record->title))
                     $readonly = 'readonly="true"';
                         ?>
 
-                    {{ Form::text('title', old('title'), $attributes = 
+                    {{ Form::text('title', old('title'), $attributes =
 
-                    array('class' => 'form-control', 
+                    array('class' => 'form-control',
 
                     'placeholder' => 'Title',
 
-                    'ng-model' => 'title', 
+                    'ng-model' => 'title',
 
                     'required' => 'true',
 
@@ -37,7 +37,7 @@
                     )) }}
 
 
-                    
+
                     <div class="validation-error" ng-messages="formValidate.title.$error" >
 
 	    					{!! getValidationMessage()!!}
@@ -67,10 +67,10 @@
 
                         $selected = null;
                         if($record)
-                        $selected = $record->type;      
+                        $selected = $record->type;
                     ?>
 
-                    
+
 
                     {{Form::select('type', templatetypes(), $selected, ['placeholder' => getPhrase('select'),'class'=>'form-control select2',
 
@@ -78,14 +78,14 @@
 
                             'required'=> 'true',
 
-                            'ng-init'=>'type="'.$val.'"', 
+                            'ng-init'=>'type="'.$val.'"',
 
                             'ng-class'=>'{"has-error": formValidate.type.$touched && formValidate.type.$invalid}'
 
                          ])}}
 
 
-                    
+
                         <div class="validation-error" ng-messages="formValidate.type.$error" >
 
                             {!! getValidationMessage()!!}
@@ -100,13 +100,13 @@
 
                     <span class="text-red">*</span>
 
-                    {{ Form::text('subject', old('subject'), $attributes = 
+                    {{ Form::text('subject', old('subject'), $attributes =
 
-                    array('class' => 'form-control', 
+                    array('class' => 'form-control',
 
                     'placeholder' => 'Subject',
 
-                    'ng-model' => 'subject', 
+                    'ng-model' => 'subject',
 
                     'required' => 'true',
 
@@ -123,7 +123,7 @@
                     )) }}
 
 
-                    
+
                     <div class="validation-error" ng-messages="formValidate.subject.$error" >
 
                             {!! getValidationMessage()!!}
@@ -145,10 +145,10 @@
                     {!! Form::label('content', getPhrase('content'), ['class' => 'control-label']) !!}
 
                      <span class="text-red">*</span>
-                   
-                    {{ Form::textarea('content', old('content'), $attributes = 
 
-                    array('class' => 'form-control ckeditor', 
+                    {{ Form::textarea('content', old('content'), $attributes =
+
+                    array('class' => 'form-control ckeditor',
 
                     'placeholder' => 'Content',
 
@@ -161,7 +161,7 @@
                     )) }}
 
 
-                    
+
                     <div class="validation-error" ng-messages="formValidate.content.$error" >
 
 	    				{!! getValidationMessage()!!}
@@ -183,4 +183,3 @@
 
 
 
-                
