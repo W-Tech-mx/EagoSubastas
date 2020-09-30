@@ -9,10 +9,10 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            Listado
+            {{getPhrase('list')}}
 
              @can('user_create')
-            <a href="{{ URL_USERS_ADD }}" class="btn btn-success btn-add pull-right">Nuevo +</a>
+            <a href="{{ URL_USERS_ADD }}" class="btn btn-success btn-add pull-right">{{getPhrase('add_new')}}</a>
             @endcan
 
         </div>
@@ -23,7 +23,7 @@
                     <tr>
                         <th style="text-align:center;">S.no.</th>
 {{--                        <th> {{getPhrase('username')}} </th>--}}
-                        <th> Apellido </th>
+                        <th> Username </th>
 
 {{--                        <th> {{getPhrase('email')}} </th>--}}
                          <th> Email </th>

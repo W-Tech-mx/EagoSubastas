@@ -9,10 +9,11 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            Listado
+            <?php echo e(getPhrase('list')); ?>
+
 
              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user_create')): ?>
-            <a href="<?php echo e(URL_USERS_ADD); ?>" class="btn btn-success btn-add pull-right">Nuevo +</a>
+            <a href="<?php echo e(URL_USERS_ADD); ?>" class="btn btn-success btn-add pull-right"><?php echo e(getPhrase('add_new')); ?></a>
             <?php endif; ?>
 
         </div>
@@ -23,7 +24,7 @@
                     <tr>
                         <th style="text-align:center;">S.no.</th>
 
-                        <th> Apellido </th>
+                        <th> Username </th>
 
 
                          <th> Email </th>

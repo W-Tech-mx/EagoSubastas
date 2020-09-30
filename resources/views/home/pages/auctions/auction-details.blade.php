@@ -162,26 +162,8 @@ use App\SubCatogory;
                 <p class="text-muted text-right">IDSubasta{{$auction->id}}</p>
                 <p class="text-muted text-right">IDLote:{{$auction->sub_category_id}}</p>
                 <h4>{{$auction->title}}</h4>
-                            @if(Session::has('succes'))
-                                <div class="col-lg-12">
-                                    <div class="alert alert-warning alert-dismissible fade show mb-4 mt-4" role="alert">
-                                        {{Session::get('succes')}}
-                                        <button type="" class="close" data-dismiss="alert" arial-label="close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            @endif
-                              @if(Session::has('warning'))
-                                <div class="col-lg-12">
-                                    <div class="alert alert-warning alert-dismissible fade show mb-4 mt-4" role="alert">
-                                        {{Session::get('warning')}}
-                                        <button type="" class="close" data-dismiss="alert" arial-label="close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            @endif
+
+
                 @if (!$live_auction) <!--normal auction happening-->
                   <p title="Auction End Date"> La subasta regular finaliza el <?php echo date(getSetting('date_format','site_settings').' H:i:s', strtotime($auction->end_date));?> </p>
                 @endif
@@ -222,7 +204,7 @@ use App\SubCatogory;
                    <!-- <p class="text-blue"><b><i class="pe-7s-timer"> </i>
                         {{strtoUpper(getAuctionDaysLeft($auction->start_date,$auction->end_date))}}</b></p>-->
                        <div class="row">
-                           <div class="col-4">
+                           <div class="col-6">
                                <h4>
                                     <strong data-toggle="tooltip" title="Precio de reserva" data-placement="top" >${!! number_format($auction->reserve_price) !!} MXN</strong>
 
@@ -242,34 +224,20 @@ use App\SubCatogory;
                                     <p data-toggle="tooltip" title="Precio de reserva" data-placement="top" >El incremento es de: ${!! number_format($auction->bid_increment) !!} MXN</p>
                                @endif
                            </div>
-                           <div class="col-8">
+                           <div class="col-6 ">
                                @foreach($auctionbidders as $item)
-                                    <button class="btn mb-3 mr-3" style="padding: 5px;  background-color: #2064e7; border-radius: 10px; color: #fff" >
-                                      Tiros realizados <span class="badge" style="background-color: #0c100c;">{{$item->no_of_times}}</span>
-                                    </button>
+                                        <span class="badge" data-toggle="tooltip" title="No. de tiros que ha realizado" data-placement="top" >Tiros realizados- {{$item->no_of_times}}</span>
                                         @break
-                               @endforeach
-
-                                    <button class="btn mb-3" style="padding: 5px;  background-color: #2064e7; border-radius: 10px; color: #fff" >
-                                      Tiros permitidos <span class="badge" style="background-color: #0c100c;">{{$auction->tiros}}</span>
-                                    </button>
-
-                               @foreach($auctionbidders as $item)
-                                    <button class="btn mb-3 mr-1" style="padding: 5px;  background-color: #e9841a; border-radius: 10px; color: #fff" >
-                                      Articulos ganados <span class="badge" style="background-color: #0c100c;"><?php echo $auctionbidders2[0]->bidder_count; ?></span>
-                                    </button>
-                                       @break
-                               @endforeach
-
+                                    @endforeach
+                                        <span class="badge" data-toggle="tooltip" title="No. de tiros permitidos" data-placement="top" >Tiros permitidos- {{$auction->tiros}}</span>
                                @foreach($lote as $lotes)
-                                    <button class="btn mb-3 mr-1" style="padding: 5px;  background-color: #e9841a; border-radius: 10px; color: #fff" >
-                                      Articulos a ganar <span class="badge" style="background-color: #0c100c;">9</span>
-                                    </button>
+                                   <span class="badge" data-toggle="tooltip" title="No. de tiros permitidos" data-placement="top" >Articulos ganar- {{$lotes->articulos}}</span>
                                    @break
                                @endforeach
-
+                               <span class="badge" data-toggle="tooltip" title="No. de tiros permitidos" data-placement="top" >Articulos ganados- {{$auction->tiros}}</span>
                            </div>
                        </div>
+
 
 
             @if ($bid_options)
@@ -278,7 +246,16 @@ use App\SubCatogory;
                                 <p>seleccione oferta máxima</p>
                         <div class="row">
                           <div class="col-lg-6">
-
+                            @if(Session::has('succes'))
+                                <div class="col-lg-12">
+                                    <div class="alert alert-warning alert-dismissible fade show mb-4 mt-4" role="alert">
+                                        {{Session::get('succes')}}
+                                        <button type="" class="close" data-dismiss="alert" arial-label="close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            @endif
                                 {!! Form::open(array('url' => URL_SAVE_BID, 'method' => 'POST','name'=>'formBid', 'files'=>'true', 'novalidate'=>'')) !!}
 
                                 {{-- Traer el id de la subasta en que se esta --}}
@@ -322,6 +299,18 @@ use App\SubCatogory;
 
                 <div class="row">
                   <div class="col-lg-12">
+
+                        @if(Session::has('succes'))
+                            <div class="col-lg-12">
+                                <div class="alert alert-warning alert-dismissible fade show mb-4 mt-4" role="alert">
+                                    {{Session::get('succes')}}
+                                    <button type="" class="close" data-dismiss="alert" arial-label="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        @endif
+
 
                     {!! Form::open(array('url' => URL_SAVE_BID, 'method' => 'POST','name'=>'formBid', 'files'=>'true', 'novalidate'=>'')) !!}
 
@@ -402,7 +391,16 @@ use App\SubCatogory;
                 @endif <!--if live auction not happening-->
                 <br>
                 <div>
-
+            @if(Session::has('succes'))
+                <div class="col-lg-12">
+                    <div class="alert alert-warning alert-dismissible fade show mb-4 mt-4" role="alert">
+                        {{Session::get('succes')}}
+                        <button type="" class="close" data-dismiss="alert" arial-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            @endif
                   @if (Auth::user())
                     <a href="javascript:void(0);" ng-click="addtoFavourites({{$auction->id}})" title="añadir a la lista de deseos" class="btn btn-info au-btn-modren login-bttn"><i class="pe-7s-plus"></i>
 {{--                    {{getPhrase('add_to_wish_list')}}</a>--}}

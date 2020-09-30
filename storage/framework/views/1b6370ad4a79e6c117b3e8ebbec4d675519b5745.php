@@ -4,7 +4,7 @@
                
 
 				<div class="form-group">
-                    <?php echo Form::label('name', 'Nombre', ['class' => 'control-label']); ?>
+                    <?php echo Form::label('name', getPhrase('name'), ['class' => 'control-label']); ?>
 
 
                     <span class="text-red">*</span>
@@ -19,7 +19,7 @@
 
                     array('class' => 'form-control', 
 
-                    'placeholder' => 'Nombre',
+                    'placeholder' => 'Name',
 
                     'ng-model' => 'name', 
 
@@ -77,7 +77,7 @@
 
                     ?>
 
-                    <?php echo Form::label('username', 'Apellido', ['class' => 'control-label']); ?>
+                    <?php echo Form::label('username', getPhrase('username'), ['class' => 'control-label']); ?>
 
 
                     <span class="text-red">*</span>
@@ -86,7 +86,7 @@
 
                     array('class' => 'form-control', 
 
-                    'placeholder' => 'Apellido',
+                    'placeholder' => 'Username',
 
                     'ng-model' => 'username', 
 
@@ -149,7 +149,7 @@
 
                     ?>
 
-                    <?php echo Form::label('email', 'Correo', ['class' => 'control-label']); ?>
+                    <?php echo Form::label('email', getPhrase('email'), ['class' => 'control-label']); ?>
 
 
                     <span class="text-red">*</span>
@@ -158,7 +158,7 @@
 
                     array('class' => 'form-control', 
 
-                    'placeholder' => 'Correo',
+                    'placeholder' => 'Email',
 
                     'ng-model' => 'email', 
 
@@ -199,14 +199,14 @@
                 <div class="form-group">
 
 
-                    <?php echo Form::label('password', 'Contraseña', ['class' => 'control-label']); ?>
+                    <?php echo Form::label('password', getPhrase('password'), ['class' => 'control-label']); ?>
 
 
                     <span class="text-red">*</span>
 
                     <?php echo e(Form::password('password', $attributes = array('class'=>'form-control instruction-call',
 
-                        'placeholder' => 'Contraseña',
+                        'placeholder' => getPhrase("password"),
 
                         'ng-model'=>'password',
 
@@ -238,14 +238,14 @@
                 <div class="form-group">
 
 
-                    <?php echo Form::label('confirm_password', 'Confirmar contraseña', ['class' => 'control-label']); ?>
+                    <?php echo Form::label('confirm_password', getPhrase('confirm_password'), ['class' => 'control-label']); ?>
 
 
                     <span class="text-red">*</span>
 
                     <?php echo e(Form::password('password_confirmation', $attributes = array('class'=>'form-control instruction-call',
 
-                        'placeholder' => 'Confirmar contraseña',
+                        'placeholder' => getPhrase("confirm_password"),
 
                         'ng-model'=>'password_confirmation',
 
