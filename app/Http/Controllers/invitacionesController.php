@@ -64,18 +64,15 @@ class InvitacionesController extends Controller
 
     public function enviarCorreo(Request $request){
         $lote = $request->get('auction_id');//154
+
         $invitacion = Invitaciones:://154
                     where('auction_id',$lote)
                     ->select('email')
                     ->get();
 
-        $email = $request->get('email');
-        dd($email);
+        $coreos = $invitacion->implode('email',', ');
+        //dd($coreos);
 
-         $data['invitaciones'] = $invitacion;
-         $data['invitaciones']->implode('email', ', ');
-
-           //dd($data['invitaciones']);
 
           try {
               $mail = new PHPMailer(true);
@@ -92,7 +89,7 @@ class InvitacionesController extends Controller
 
                 //Recipients
                 $mail->setfrom('contacto@eago.com.mx', 'EAGO'); //DESDE DONDE SE VA AENVIAR
-                $mail->addaddress($correo);//aldiazm.11@gmail.com
+                $mail->addaddress($coreos);//aldiazm.11@gmail.com
 
                 // Add a recipient
                 //  $mail->addaddress('contacto_webtech@yahoo.com', 'Information-copia');
